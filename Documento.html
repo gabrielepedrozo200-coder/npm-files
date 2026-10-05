@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>npm-files - Documento</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 40px;
+        color: #222;
+      }
+      h1, h2, h3 {
+        color: #111;
+      }
+      code {
+        background: #f4f4f4;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      a {
+        color: #0366d6;
+      }
+      .meta {
+        color: #555;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>npm-files</h1>
+    <div class="meta">
+      Repositório: <a href="https://github.com/gabrielepedrozo200-coder/npm-files">gabrielepedrozo200-coder/npm-files</a><br />
+      Tipo: Documento HTML para exportação/visualização em PDF
+    </div>
+
+    <h2>Resumo</h2>
+    <p>
+      Este repositório contém uma biblioteca JavaScript chamada <strong>npm-files</strong>,
+      cuja finalidade é listar e acessar arquivos publicados de um pacote npm.
+    </p>
+
+    <h2>Descrição do projeto</h2>
+    <p>
+      O pacote permite recuperar os arquivos de um módulo do npm, emitindo eventos para cada arquivo,
+      com informações como caminho, tamanho, data de modificação e conteúdo.
+    </p>
+
+    <h2>Exemplo de uso</h2>
+    <pre><code>var files = require('npm-files');
+
+files('intersect')
+  .on('file', function(file) {
+    console.log(file.props);
+    file.pipe(process.stdout, { end: false });
+  })
+  .on('end', function() {
+    console.log('end');
+  })
+  .on('error', function(err) {
+    throw err;
+  });</code></pre>
+
+    <h2>API</h2>
+    <p><strong>files(name[, opts])</strong></p>
+    <p>Cria um EventEmitter que emite um evento <code>file</code> por arquivo do módulo e <code>end</code> ao fim do processo.</p>
+
+    <p><strong>files#on('file', fn)</strong></p>
+    <p>Emite um stream legível com a propriedade <code>props</code>, incluindo:</p>
+    <ul>
+      <li><code>path</code></li>
+      <li><code>size</code></li>
+      <li><code>mtime</code></li>
+      <li><code>cksum</code></li>
+    </ul>
+
+    <p><strong>files#on('end', fn)</strong></p>
+    <p>Indica que a operação terminou.</p>
+
+    <p><strong>files#on('error', fn)</strong></p>
+    <p>Emite erro caso algo falhe.</p>
+
+    <h2>Instalação</h2>
+    <pre><code>$ npm install npm-files</code></pre>
+
+    <h2>Licença</h2>
+    <p>MIT</p>
+
+    <h2>Observação</h2>
+    <p>
+      Este documento foi gerado como base para visualização em navegador ou exportação para PDF.
+    </p>
+  </body>
+</html>
