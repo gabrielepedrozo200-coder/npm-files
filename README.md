@@ -1,5 +1,5 @@
 
-# npm-files
+
 
 Get the published source files of a node module.
 
